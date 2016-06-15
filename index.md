@@ -34,6 +34,23 @@ To start using the Shiny App, click the link below:
 
 https://skycrater.shinyapps.io/DDP_Project/
 
+The sample line graph can be seen below:
+
+
+```
+## Warning in dir.create(dirname(file_)): cannot create dir 'assets\fig',
+## reason 'No such file or directory'
+```
+
+```
+## Warning in file(con, "w"): cannot open file 'assets/fig/unnamed-
+## chunk-1-1.html': No such file or directory
+```
+
+```
+## Error in file(con, "w"): cannot open the connection
+```
+
 --- .class #id 
 
 ## Performance Measure

@@ -36,61 +36,16 @@ https://skycrater.shinyapps.io/DDP_Project/
 
 The sample line graph can be seen below:
 
-```{r, cache=TRUE,echo=FALSE, results='asis'}
-library(rCharts)
-library(knitr)
-data("UKDriverDeaths")
-
-#Pre-process the Data
-accident <- function(d){
-  ds <- as.data.frame(d)
-  colnames(ds) <- "Actual_Deaths"
-  ds$Actual_Deaths <- as.numeric(ds$Actual_Deaths)
-  
-  #Jan 1969 to Dec 1984
-  date <- data.frame(m=character(0))
-  
-  pred <- data.frame(Forecasted_Deaths = numeric(0))
-  
-  #Building Data Frames for Years and Months
-  for(yr in 1969:1984){
-    for(mth in 1:12){
-      if(mth < 10){
-        mYr <- paste("0", as.character(mth), sep="")
-        mYr <- paste(yr, mth, "01", sep = "-")
-      }else
-        mYr <- paste(yr, mth, "01", sep="-")
-      date <- rbind(as.matrix(date), as.character(mYr)) 
-    }
-  }
-  date <- as.data.frame(date)
-  
-  #Building Data Frames for Forecasted Values
-  #initialize
-  pred <- rbind(as.matrix(pred), c(0))
-  
-  #start Naive Forecasting
-  for(i in 1:nrow(ds)-1){
-    pred <- rbind(as.matrix(pred), ds[i,c("Actual_Deaths")])
-  }
-  
-  pred <- as.data.frame(pred)
-  
-  #Combine Columns
-  ds <- cbind(ds, pred)  
-  newDS <- cbind(date, ds)
-  newDS <- transform(newDS, m=as.character(m))
-  
-  newDS
-}
-
-d <- accident(UKDriverDeaths)
-
-mPlot(x = "m", y = list("Actual_Deaths", "Forecasted_Deaths"), data = d, type = 'Line',
-            labels = list('Actual # of Deaths', 'Forecasted # of Deaths'), pointSize = 0)
-    
 
 ```
+## Loading required package: reshape2
+```
+
+```
+## Warning: package 'reshape2' was built under R version 3.2.5
+```
+
+<iframe src=' figure/unnamed-chunk-1-1.html ' scrolling='no' frameBorder='0' seamless class='rChart morris ' id=iframe- chartfb8718852f6 ></iframe> <style>iframe.rChart{ width: 100%; height: 400px;}</style>
 
 --- .class #id 
 
